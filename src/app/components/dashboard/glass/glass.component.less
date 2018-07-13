@@ -1,0 +1,88 @@
+
+
+.glass{
+    text-align: center;
+    img{
+        position: absolute;
+        width: 60%;
+        position: absolute;
+        margin : 0 auto 0 auto;
+        left: 0;
+        right: 0;
+        top: 13vh;
+        z-index: 1000;
+    }
+}
+
+.glassButtons{
+    text-align: center;
+    margin-top: 30px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1vh;
+    button{
+        padding: 10px 20px;
+        background-color: transparent;
+        color: white;
+        border: 0;
+        cursor: pointer;
+    }
+    button:focus{
+        outline: none;
+    }
+    button:hover{
+        color: #147ebc;
+        transform: scale(1.2)
+    }
+
+    button:disabled{
+        color: rgb(145, 145, 145);
+        cursor: no-drop;
+    &:hover{
+        transform: scale(1);
+    }
+    }
+
+}
+
+.glass{
+    .glassImage{
+      z-index: 1001;
+    }
+    .garnish{
+        z-index: 1002;
+    }
+    .straw{
+        z-index: 1003;
+    }
+}
+
+
+@media screen and (max-width:800px) and (min-width:450px){
+.glass{
+    text-align: center;
+    img{
+        top: 25%;
+        width: 50%;
+    }
+}
+}
+
+
+@media screen and (max-width:450px){
+.glass{
+    text-align: center;
+    img{
+        top: 25%;
+        width: 50%;
+    }
+}
+.glassButtons{
+    margin : 0px auto 0 auto;    
+    button{
+        padding: 0px 20px;
+        font-size: 16px;
+    }
+}
+}

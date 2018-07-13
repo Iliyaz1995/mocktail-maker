@@ -1,0 +1,51 @@
+<div class="main-headings" (click)="closeAllTabs()">
+  <h4>Recipe Items</h4>
+</div>
+<div class="accordian animated fadeInUp">
+  <p-accordion [activeIndex]="index" (onOpen)="onTabOpen($event)">
+    <p-accordionTab header="Fruit juices">
+      <div class="drinkRadio" (click)="optionsChange('juice', selectedJuice, $event)" *ngFor="let fruitJuice of fruitJuices">
+        <p-radioButton value="{{fruitJuice.value}}" label="{{fruitJuice.label}}" [(ngModel)]="selectedJuice"></p-radioButton>
+      </div>
+    </p-accordionTab>
+
+    <p-accordionTab header="Flavored syrups">
+      <span class="errorMessage" *ngIf="selectedSyrup?.length >= 2">
+        <i class="fa fa-exclamation-circle fa-lg" pTooltip="you can select only 2 syrups" tooltipPosition="right" aria-hidden="true"></i>
+      </span>
+      <div class="syrupRadio" (click)="optionsChange('syrup', selectedSyrup)" *ngFor="let syrup of syrups">
+      <p-checkbox #checkBox name="syrupGroup" [disabled]="!checkBox.checked && selectedSyrup?.length >= 2" value="{{syrup.value}}" label="{{syrup.label}}" [(ngModel)]="selectedSyrup"></p-checkbox>
+      </div>
+    </p-accordionTab>
+
+    <p-accordionTab header="Garnish slices">
+      <div class="garnishRadio" (click)="optionsChange('garnish', selectedGarnish)" *ngFor="let garnish of garnishes">
+        <p-radioButton value="{{garnish.value}}" label="{{garnish.label}}" [(ngModel)]="selectedGarnish"></p-radioButton>
+      </div>
+    </p-accordionTab>
+
+    <p-accordionTab header="Top ons">
+        <span class="errorMessage" *ngIf="selectedJuice == undefined || selectedJuice == ''">
+           <i class="fa fa-exclamation-circle fa-lg" pTooltip="please select your drink" tooltipPosition="right" aria-hidden="true"></i>
+        </span>
+      <div class="topOnsRadio" (click)="optionsChange('topOn', selectedTopOn)" *ngFor="let topOn of topOns">
+        <p-radioButton [disabled]="selectedJuice == undefined || selectedJuice == ''" value="{{topOn.value}}" label="{{topOn.label}}" [(ngModel)]="selectedTopOn"></p-radioButton>
+      </div>
+    </p-accordionTab>
+
+    <p-accordionTab header="Straws">
+      <div class="strawsRadio" (click)="optionsChange('straw', selectedStraw)" *ngFor="let straw of straws">
+        <p-radioButton value="{{straw.value}}" label="{{straw.label}}" [(ngModel)]="selectedStraw"></p-radioButton>
+      </div>
+    </p-accordionTab >
+
+    <p-accordionTab header="Ice cubes">
+        <span class="errorMessage" *ngIf="selectedJuice == undefined || selectedJuice == ''">
+          <i class="fa fa-exclamation-circle fa-lg" pTooltip="please select your drink" tooltipPosition="right" aria-hidden="true"></i>
+         </span>
+      <div class="iceCubesRadio" (click)="optionsChange('iceCube', selectedIceCube)" *ngFor="let iceCube of iceCubes">
+        <p-radioButton [disabled]="selectedJuice == undefined || selectedJuice == ''" value="{{iceCube.value}}" label="{{iceCube.label}} pcs" [(ngModel)]="selectedIceCube"></p-radioButton>
+      </div>
+    </p-accordionTab>
+  </p-accordion>
+</div>
