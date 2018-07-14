@@ -98,7 +98,7 @@ buttonsDisable(){
     this.undoDisabled = false;
   }
 
-  if (this.index <= 1) {
+  if (this.index <= 1 || JSON.stringify(this.selectedOptions) == this.optionsHistoryUndo[this.optionsHistoryUndo.length - 1]) {
     this.redoDisabled = true
   } else {
     this.redoDisabled = false;
