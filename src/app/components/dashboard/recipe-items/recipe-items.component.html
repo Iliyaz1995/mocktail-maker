@@ -1,10 +1,10 @@
 <div class="main-headings" (click)="closeAllTabs()">
-  <h4>Recipe Items</h4>
+  <h4>Ingredients</h4>
 </div>
 <div class="accordian animated fadeInUp">
   <p-accordion [activeIndex]="index" (onOpen)="onTabOpen($event)">
     <p-accordionTab header="Fruit juices">
-      <div class="drinkRadio" (click)="optionsChange('juice', selectedJuice, $event)" *ngFor="let fruitJuice of fruitJuices">
+      <div class="drinkRadio col-12" (click)="optionsChange('juice', selectedJuice, $event)" *ngFor="let fruitJuice of fruitJuices">
         <p-radioButton value="{{fruitJuice.value}}" label="{{fruitJuice.label}}" [(ngModel)]="selectedJuice"></p-radioButton>
       </div>
     </p-accordionTab>

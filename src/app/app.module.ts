@@ -26,7 +26,7 @@ import { RecommendedItemsSlideComponent } from './components/dashboard/recommend
     FormsModule,
     dashboardModule,
     BrowserAnimationsModule,
-    primeNgModule
+    primeNgModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,8 @@
 <div class="navbar">
-  
+  <h4>Mocktail Macker</h4>
+</div>
+<div class="modelCustom" *ngIf="overlayDisplay">
+    <p-progressBar mode="indeterminate" [style]="{'height': '6px', 'backgroundColor':'#147ebc', 'border':0}"></p-progressBar>
 </div>
 
 
@@ -8,7 +11,7 @@
 </div>
 <div class="row">
   <div class="col-md-6 col-12 visible-xs (only) = d-block d-sm-none glassComponent-xs">
-      <app-glass [selectedOptions]="selectedOptions" (resetOptionsToRecipe)="optionsReset($event)"></app-glass>
+      <app-glass [selectedOptions]="selectedOptions" (resetOptionsToRecipe)="optionsReset($event)" (preLoader)="preLoader($event)"></app-glass>
   </div>
     <div class="col-md-3 col-12 recipe-items">
       <main>
@@ -17,7 +20,7 @@
   </div>
   
   <div class="col-md-6 col-12 hidden-xs (only) = d-none d-sm-block glassComponent">
-    <app-glass [selectedOptions]="selectedOptions" (resetOptionsToRecipe)="optionsReset($event)"></app-glass>
+    <app-glass [selectedOptions]="selectedOptions" (resetOptionsToRecipe)="optionsReset($event)" (preLoader)="preLoader($event)"></app-glass>
   </div>
   
     <div class="col-md-3 col-6 hidden-xs (only) = d-none d-sm-block">

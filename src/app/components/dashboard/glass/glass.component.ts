@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, Output, EventEmitter, KeyValueDiff
 import { trigger, transition, state, style, animate } from '@angular/animations';
 import { Recipe } from "../recipe.interface";
 
+
 @Component({
   selector: 'app-glass',
   templateUrl: './glass.component.html',
@@ -21,9 +22,12 @@ export class GlassComponent implements OnInit, OnChanges {
   }
   
   @Output() resetOptionsToRecipe = new EventEmitter();
+  @Output() preLoader = new EventEmitter();
   @Input() selectedOptions: Recipe;
   @ViewChild('undoBtn') undoBtn: ElementRef;
   @ViewChild('redoBtn') redoBtn: ElementRef;
+  @ViewChild('glass') glassImg: ElementRef;
+  
   
 
   private resetOptions = {
@@ -36,7 +40,6 @@ export class GlassComponent implements OnInit, OnChanges {
   };
   undoDisabled: boolean = true;
   redoDisabled: boolean = true;
-  optionsHistoryRedo = [];
   optionsHistoryUndo= [];
   recordHistory = true;
 
@@ -57,7 +60,6 @@ reset(){
     this.resetOptionsToRecipe.emit(this.resetOptions)
     // console.log(this.resetOptions);
     this.optionsHistoryUndo = [];
-    this.optionsHistoryRedo = [];
     
   }
   this.optionsHistoryUndo = [];
@@ -65,75 +67,84 @@ reset(){
   
 }
 
+index:number = 1;
 stopHistory() {
     this.recordHistory = true;
 }
-index:number = 1;
-  undo(){
+undo(){
     this.undoBtn.nativeElement.focus();
     this.recordHistory = false;
     this.index++
-    console.log(this.optionsHistoryUndo);
     this.resetOptionsToRecipe.emit(JSON.parse(this.optionsHistoryUndo[this.optionsHistoryUndo.length - this.index]))
-    console.log(this.index);
 }
 
 redo(){
   this.redoBtn.nativeElement.focus();
   this.recordHistory = false;
   this.index--
-  console.log(this.optionsHistoryUndo);
   this.resetOptionsToRecipe.emit(JSON.parse(this.optionsHistoryUndo[this.optionsHistoryUndo.length - this.index]))
-  console.log(this.index);
-  
-  
 }
 
 
 
-  ngOnInit() {
+loadingFinished(){
+  this.preLoader.emit(false)
+  
+  
+}
 
+buttonsDisable(){
+  if (this.index >= this.optionsHistoryUndo.length) {
+    this.undoDisabled = true;
+  } else {
+    this.undoDisabled = false;
   }
 
+  if (this.index <= 1) {
+    this.redoDisabled = true
+  } else {
+    this.redoDisabled = false;
+  }
+}
 
-  ngOnChanges(){
+checkingForChanges(){
+  var resetTringValue = {
+    juice: '',
+    syrup: [],
+    garnish: '',
+    topOn: '',
+    straw: '',
+    iceCube: 0
+  }
+
+  if (this.selectedOptions !== undefined) {
+    const changes = this.optionsDiffer.diff(this.selectedOptions);
+
+    
+   
+    if ((changes && this.recordHistory) && JSON.stringify(this.selectedOptions) !== JSON.stringify(resetTringValue)) {
+      this.optionsHistoryUndo.push(JSON.stringify(this.selectedOptions))
+      this.preLoader.emit(true)
+
+      
+    }
+
+    this.buttonsDisable()
+  }
+}
+
+  ngOnInit() {
+  }
+  
+  
+  ngOnChanges(changes){
     if (this.selectedOptions !== undefined) {
       this.optionsDiffer = this.differs.find(this.selectedOptions).create();
     }
-    
+    // console.log(changes);
   }
   
   ngDoCheck(): void {
-    var resetTringValue = {
-      juice: '',
-      syrup: [],
-      garnish: '',
-      topOn: '',
-      straw: '',
-      iceCube: 0
-    }
-
-    if (this.selectedOptions !== undefined) {
-    const changes = this.optionsDiffer.diff(this.selectedOptions);
-
-    if ((changes && this.recordHistory) && JSON.stringify(this.selectedOptions) !== JSON.stringify(resetTringValue)) {
-       this.optionsHistoryUndo.push(JSON.stringify(this.selectedOptions))
-    }
-      
-      if (this.index >= this.optionsHistoryUndo.length){
-         this.undoDisabled = true;
-      }else{
-        this.undoDisabled = false;
-      }
-
-      if (this.index <= 1){
-        this.redoDisabled = true
-      }else{
-        this.redoDisabled = false;
-      }
-
-   }
-   
-  
+    this.checkingForChanges()
   }
 }

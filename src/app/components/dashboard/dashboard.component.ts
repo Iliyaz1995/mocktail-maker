@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
@@ -8,12 +8,13 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
   }
   selectedOptions:string;
   resetOptionsFromGlass;
+  public overlayDisplay;
 
   optionsChange($event){
     this.selectedOptions = $event;
@@ -22,5 +23,9 @@ export class DashboardComponent implements OnInit {
   optionsReset($event){
     this.resetOptionsFromGlass = $event;
   }
-
+  preLoader($event){
+    this.overlayDisplay = $event;
+    // console.log($event);
+    this.cd.detectChanges();
+  }
 }

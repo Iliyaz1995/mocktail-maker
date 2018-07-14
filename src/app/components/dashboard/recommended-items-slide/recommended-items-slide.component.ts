@@ -13,7 +13,7 @@ export class RecommendedItemsSlideComponent implements OnInit {
 
   showSlide(){
     this.slideVisiblity = true;
-    console.log('clicked');
+    // console.log('clicked');
     
   }
   ngOnInit() {

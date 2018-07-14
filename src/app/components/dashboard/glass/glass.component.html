@@ -1,15 +1,22 @@
+<img src="../../../../assets/main-bakcground.jpg" alt="" srcset="" *ngIf="test">
 <div class="glass">
-    <img src="../../../../assets/glass.png" alt="glass" class="glassImage">
-    <img @fadeIn src="../../../../assets/liquid-{{selectedOptions?.juice}}.png" alt="juice" class="juice" *ngIf="selectedOptions !== undefined && (selectedOptions?.juice
-    !== undefined && selectedOptions?.juice !== '')">
-    <img src="../../../../assets/garnish-{{selectedOptions?.garnish}}.png" alt="garnish" class="garnish" *ngIf="selectedOptions !== undefined && (selectedOptions?.garnish !== undefined && selectedOptions?.garnish !== '')">
-    <img src="../../../../assets/topon-{{selectedOptions?.topOn}}.png" alt="top on" class="topOn" *ngIf="selectedOptions !== undefined && (selectedOptions?.topOn !== undefined && selectedOptions?.topOn !== '')">
-    <img src="../../../../assets/straw-{{selectedOptions?.straw}}.png" alt="straw" class="straw" *ngIf="selectedOptions !== undefined && (selectedOptions?.straw !== undefined && selectedOptions?.straw !== '')">
-    <img src="../../../../assets/icecube-{{selectedOptions?.iceCube}}.png" alt="iceCube" class="iceCube" *ngIf="selectedOptions !== undefined && (selectedOptions?.iceCube !== 0 && selectedOptions?.iceCube !== '')">
+    <img #glass src="../../../../assets/glass.png" alt="glass" class="glassImage">
+    <img  @fadeIn src="../../../../assets/liquid-{{selectedOptions?.juice}}.png" alt="juice" class="juice" *ngIf="selectedOptions !== undefined && (selectedOptions?.juice
+    !== undefined && selectedOptions?.juice !== '')" (load)="loadingFinished()">
+    <img src="../../../../assets/garnish-{{selectedOptions?.garnish}}.png" alt="garnish" class="garnish" *ngIf="selectedOptions !== undefined && (selectedOptions?.garnish !== undefined && selectedOptions?.garnish !== '')" (load)="loadingFinished()">
+    <img src="../../../../assets/topon-{{selectedOptions?.topOn}}.png" alt="top on" class="topOn" *ngIf="selectedOptions !== undefined && (selectedOptions?.topOn !== undefined && selectedOptions?.topOn !== '')" (load)="loadingFinished()">
+    <img src="../../../../assets/straw-{{selectedOptions?.straw}}.png" alt="straw" class="straw" *ngIf="selectedOptions !== undefined && (selectedOptions?.straw !== undefined && selectedOptions?.straw !== '')" (load)="loadingFinished()">
+    <img src="../../../../assets/icecube-{{selectedOptions?.iceCube}}.png" alt="iceCube" class="iceCube" *ngIf="selectedOptions !== undefined && (selectedOptions?.iceCube !== 0 && selectedOptions?.iceCube !== '')" (load)="loadingFinished()">
 </div>
 
 <div class="glassButtons">
     <button #undoBtn type="button" (blur)="stopHistory()" (click)="undo()"[disabled]="undoDisabled"><span class="fa fa-undo fa-2x" aria-hidden="true" ></span></button>
     <button type="button" (click)="reset()"><span class="fa fa-refresh fa-2x" aria-hidden="true"></span></button>
     <button #redoBtn type="button" (blur)="stopHistory()" (click)="redo()"[disabled]="redoDisabled"><span class="fa fa-repeat fa-2x" aria-hidden="true" ></span></button>
+</div>
+
+
+<div class="span cheat">
+    <img src="../../../../assets/cheat-1.gif" (load)="loadingFinished()" *ngIf="selectedOptions !== undefined && (selectedOptions?.syrup !== [] && selectedOptions?.syrup[0] !== undefined)">
+    <img src="../../../../assets/cheat-2.gif" (load)="loadingFinished()" *ngIf="selectedOptions !== undefined && (selectedOptions?.syrup !== [] && selectedOptions?.syrup[1] !== undefined)">
 </div>

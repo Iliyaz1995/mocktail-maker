@@ -11,6 +11,8 @@ body{
 	background-position: top;
 }
 
+
+
 .main-headings{
 	color: white;
     // background-color: rgba(142, 142, 142, 0.1);
@@ -48,6 +50,7 @@ body{
 	margin-left: 25px;
 	cursor: pointer;
 	padding: 2px 0;
+	width: 75%;
 	&:hover{
 		color: #147ebc;
 		transform: scale(1.1)
@@ -81,6 +84,10 @@ body{
 		left: -3px;
 }
 
+.ui-progressbar-value.ui-progressbar-value-animate.ui-widget-header{
+	background-color: rgba(0, 0, 0, 0.6);
+} 
+
 app-recommended-items-slide{
   .ui-sidebar-left.ui-sidebar-sm, .ui-sidebar-right.ui-sidebar-sm{
 	background-image: url(./assets/main-bakcground.jpg);
@@ -92,7 +99,8 @@ app-recommended-items-slide{
 	.slideButton{
 	position: fixed;
 	background-color: #147ebc;
-	padding: 5px 20px;
+    border: 0;
+    padding: 15px 25px;
 	z-index: 1000;
 }
 }
@@ -181,16 +189,12 @@ main{
 	}
 	
 	.ui-accordion .ui-accordion-header{
-		padding: 0;
+		padding: 3px;
 	  margin: 0px 25px;
 	}
 	.ui-accordion .ui-accordion-content{
   	margin: 0px 25px;
 	}
-
-	// .accordian{
-	// 	margin-top: 0;
-	// }
 }
 
 

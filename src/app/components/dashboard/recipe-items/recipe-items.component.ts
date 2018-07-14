@@ -78,14 +78,14 @@ export class RecipeItemsComponent implements OnInit, OnChanges {
   }
 
 
-  optionsChange(option, model){
+  optionsChange(option, model,event){
     if(model == undefined || model == '' || model == 0){
-     console.log(model);
+     console.log(event);
      
     }else{
       this.selectedOptions[option] = model;
       this.selectedOptionsToGlass.emit(this.selectedOptions);
-      console.log(model);
+      // console.log(model);
     }
     
   }

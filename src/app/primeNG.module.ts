@@ -10,6 +10,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { SidebarModule } from 'primeng/sidebar';
 import { TooltipModule } from 'primeng/tooltip';
 import { CheckboxModule } from 'primeng/checkbox';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({
     exports: [
@@ -21,7 +22,8 @@ import { CheckboxModule } from 'primeng/checkbox';
         RadioButtonModule,
         SidebarModule,
         TooltipModule,
-        CheckboxModule
+        CheckboxModule,
+        ProgressBarModule
     ]
 })
 export class primeNgModule { }
