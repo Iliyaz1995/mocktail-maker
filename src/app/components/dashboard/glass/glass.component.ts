@@ -89,8 +89,6 @@ redo(){
 
 loadingFinished(){
   this.preLoader.emit(false)
-  
-  
 }
 
 buttonsDisable(){
@@ -119,14 +117,10 @@ checkingForChanges(){
 
   if (this.selectedOptions !== undefined) {
     const changes = this.optionsDiffer.diff(this.selectedOptions);
-
     
-   
     if ((changes && this.recordHistory) && JSON.stringify(this.selectedOptions) !== JSON.stringify(resetTringValue)) {
       this.optionsHistoryUndo.push(JSON.stringify(this.selectedOptions))
       this.preLoader.emit(true)
-
-      
     }
 
     this.buttonsDisable()
