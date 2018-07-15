@@ -1,5 +1,5 @@
 <div class="navbar">
-  <img src="../../../assets/logo.png" alt="Mocktail Nakers">
+  <img src="../../../assets/logo.png" alt="Mocktail Makers">
   <h4>Help ?</h4>
 </div>
 <div class="modelCustom" *ngIf="overlayDisplay" @fadeIn>
@@ -8,7 +8,7 @@
 
 
 <div class="slideNav visible-xs (only) = d-block d-sm-none">
-  <app-recommended-items-slide></app-recommended-items-slide>
+  <app-recommended-items-slide (recommendedSlideToGlass)="optionsReset($event)"></app-recommended-items-slide>
 </div>
 <div class="row">
   <div class="col-md-6 col-12 visible-xs (only) = d-block d-sm-none glassComponent-xs">
@@ -26,7 +26,7 @@
   
     <div class="col-md-3 col-6 hidden-xs (only) = d-none d-sm-block">
       <main>
-        <app-recommended-items></app-recommended-items>
+        <app-recommended-items  (RecommendedOptionsToGlass)="optionsReset($event)"></app-recommended-items>
       </main>
     </div>
 </div>

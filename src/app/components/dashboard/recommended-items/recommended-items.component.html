@@ -1,25 +1,61 @@
 <div class="main-headings right-heading" (click)="closeAllTabs()">
   <h4>Recommended</h4>
 </div>
-<div class="accordian animated fadeInUp">
+<div class="accordian animated fadeInUp recommended">
   <p-accordion [activeIndex]="index" (onOpen)="onTabOpen($event)">
-    <p-accordionTab header="Godfather I">
-      The story begins as Don Vito Corleone
+    <p-accordionTab header="Watermelon Margarita">
+      <p><span>juice: </span> {{recommendedItems[activeIndex]?.juice}}</p>
+      <p><span>syrups:</span>  {{recommendedItems[activeIndex]?.syrup}}</p>
+      <p><span>garnish: </span> {{recommendedItems[activeIndex]?.garnish}} slice</p>
+      <p><span>top ons: </span> {{recommendedItems[activeIndex]?.garnish}}</p>
+      <p><span>straw: </span> {{recommendedItems[activeIndex]?.straw}}</p>
+      <p><span>ice cubes:</span>  {{recommendedItems[activeIndex]?.iceCube}}</p>
+      <p-button icon="pi pi-check" label="select" (click)="select(activeIndex)"></p-button>
     </p-accordionTab>
-    <p-accordionTab header="Godfather II">
-      Francis Ford Coppola's legendary
+    <p-accordionTab header="Mountain Mojito">
+      <p><span>juice: </span> {{recommendedItems[activeIndex]?.juice}}</p>
+      <p><span>syrups: </span> {{recommendedItems[activeIndex]?.syrup}}</p>
+      <p><span>garnish: </span> {{recommendedItems[activeIndex]?.garnish}} slice</p>
+      <p><span>top ons: </span> {{recommendedItems[activeIndex]?.garnish}}</p>
+      <p><span>straw: </span> {{recommendedItems[activeIndex]?.straw}}</p>
+      <p><span>ice cubes: </span> {{recommendedItems[activeIndex]?.iceCube}}</p>
+      <p-button icon="pi pi-check" label="select" (click)="select(activeIndex)"></p-button>
     </p-accordionTab>
-    <p-accordionTab header="Godfather III">
-      After a break of more than 15 years,
+    <p-accordionTab header="Blueberry Mojito">
+      <p><span>juice: </span> {{recommendedItems[activeIndex]?.juice}}</p>
+      <p><span>syrups:  </span>{{recommendedItems[activeIndex]?.syrup}}</p>
+      <p><span>garnish: </span> {{recommendedItems[activeIndex]?.garnish}} slice</p>
+      <p><span>top ons: </span> {{recommendedItems[activeIndex]?.garnish}}</p>
+      <p><span>straw: </span> {{recommendedItems[activeIndex]?.straw}}</p>
+      <p><span>ice cubes:</span>  {{recommendedItems[activeIndex]?.iceCube}}</p>
+      <p-button icon="pi pi-check" label="select" (click)="select(activeIndex)"></p-button>
     </p-accordionTab>
-    <p-accordionTab header="Godfather I">
-      The story begins as Don Vito Corleone
+    <p-accordionTab header="Strawberry Chamomite">
+      <p><span>juice: </span> {{recommendedItems[activeIndex]?.juice}}</p>
+      <p><span>syrups: </span> {{recommendedItems[activeIndex]?.syrup}}</p>
+      <p><span>garnish: </span> {{recommendedItems[activeIndex]?.garnish}} slice</p>
+      <p><span>top ons: </span> {{recommendedItems[activeIndex]?.garnish}}</p>
+      <p><span>straw:</span>  {{recommendedItems[activeIndex]?.straw}}</p>
+      <p><span>ice cubes:</span>  {{recommendedItems[activeIndex]?.iceCube}}</p>
+      <p-button icon="pi pi-check" label="select" (click)="select(activeIndex)"></p-button>
     </p-accordionTab>
-    <p-accordionTab header="Godfather II">
-      Francis Ford Coppola's legendary
+    <p-accordionTab header="Lavender Lemonade">
+      <p><span>juice: </span> {{recommendedItems[activeIndex]?.juice}}</p>
+      <p><span>syrups:  </span>{{recommendedItems[activeIndex]?.syrup}}</p>
+      <p><span>garnish: </span> {{recommendedItems[activeIndex]?.garnish}} slice</p>
+      <p><span>top ons:</span>  {{recommendedItems[activeIndex]?.garnish}}</p>
+      <p><span>straw: </span> {{recommendedItems[activeIndex]?.straw}}</p>
+      <p><span>ice cubes:</span>  {{recommendedItems[activeIndex]?.iceCube}}</p>
+      <p-button icon="pi pi-check" label="select" (click)="select(activeIndex)"></p-button>
     </p-accordionTab>
-    <p-accordionTab header="Godfather II">
-      Francis Ford Coppola's legendary
+    <p-accordionTab header="Mango Mute">
+      <p><span>juice: </span> {{recommendedItems[activeIndex]?.juice}}</p>
+      <p><span>syrups: </span> {{recommendedItems[activeIndex]?.syrup}}</p>
+      <p><span>garnish: </span> {{recommendedItems[activeIndex]?.garnish}} slice</p>
+      <p><span>top ons: </span> {{recommendedItems[activeIndex]?.garnish}}</p>
+      <p><span>straw: </span> {{recommendedItems[activeIndex]?.straw}}</p>
+      <p><span>ice cubes:</span>  {{recommendedItems[activeIndex]?.iceCube}}</p>
+      <p-button icon="pi pi-check" label="select" (click)="select(activeIndex)"></p-button>
     </p-accordionTab>
   </p-accordion>
 </div>

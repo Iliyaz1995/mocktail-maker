@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -10,11 +10,14 @@ export class RecommendedItemsSlideComponent implements OnInit {
 
   constructor() { }
   slideVisiblity:boolean = false;
-
+  @Output() recommendedSlideToGlass = new EventEmitter();
   showSlide(){
     this.slideVisiblity = true;
     // console.log('clicked');
     
+  }
+  optionsChange($event){
+    this.recommendedSlideToGlass.emit($event)
   }
   ngOnInit() {
   }

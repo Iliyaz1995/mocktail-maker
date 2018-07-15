@@ -93,11 +93,11 @@ loadingFinished(){
 
 buttonsDisable(){
   var resetTringValue = {
-    juice: '',
+    juice: "",
     syrup: [],
-    garnish: '',
-    topOn: '',
-    straw: '',
+    garnish: "",
+    topOn: "",
+    straw: "",
     iceCube: 0
   }
   
@@ -112,8 +112,9 @@ buttonsDisable(){
   } else {
     this.redoDisabled = false;
   }
+  // console.log(this.selectedOptions);
 
-  if (this.selectedOptions == resetTringValue) {
+  if (JSON.stringify(this.selectedOptions) == JSON.stringify(resetTringValue)) {
     this.completeDisabled = true
   } else {
     this.completeDisabled = false
@@ -154,6 +155,6 @@ checkingForChanges(){
   
   ngDoCheck(): void {
     this.checkingForChanges()
-    console.log(this.index);
+    // console.log(this.index);
   }
 }
