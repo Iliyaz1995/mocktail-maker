@@ -26,7 +26,6 @@ export class GlassComponent implements OnInit, OnChanges {
   @Input() selectedOptions: Recipe;
   @ViewChild('undoBtn') undoBtn: ElementRef;
   @ViewChild('redoBtn') redoBtn: ElementRef;
-  @ViewChild('glass') glassImg: ElementRef;
   
   
 
@@ -40,7 +39,8 @@ export class GlassComponent implements OnInit, OnChanges {
   };
   undoDisabled: boolean = true;
   redoDisabled: boolean = true;
-  optionsHistoryUndo= [];
+  completeDisabled: boolean = true;
+  optionsHistory= [];
   recordHistory = true;
 
   optionsDiffer: KeyValueDiffer<string, any>
@@ -59,10 +59,10 @@ reset(){
   if (this.selectedOptions !== undefined) {
     this.resetOptionsToRecipe.emit(this.resetOptions)
     // console.log(this.resetOptions);
-    this.optionsHistoryUndo = [];
+    this.optionsHistory = [];
     
   }
-  this.optionsHistoryUndo = [];
+  this.optionsHistory = [];
   this.index = 1;
   
 }
@@ -75,14 +75,14 @@ undo(){
     this.undoBtn.nativeElement.focus();
     this.recordHistory = false;
     this.index++
-    this.resetOptionsToRecipe.emit(JSON.parse(this.optionsHistoryUndo[this.optionsHistoryUndo.length - this.index]))
+    this.resetOptionsToRecipe.emit(JSON.parse(this.optionsHistory[this.optionsHistory.length - this.index]))
 }
 
 redo(){
   this.redoBtn.nativeElement.focus();
   this.recordHistory = false;
   this.index--
-  this.resetOptionsToRecipe.emit(JSON.parse(this.optionsHistoryUndo[this.optionsHistoryUndo.length - this.index]))
+  this.resetOptionsToRecipe.emit(JSON.parse(this.optionsHistory[this.optionsHistory.length - this.index]))
 }
 
 
@@ -92,16 +92,31 @@ loadingFinished(){
 }
 
 buttonsDisable(){
-  if (this.index >= this.optionsHistoryUndo.length) {
+  var resetTringValue = {
+    juice: '',
+    syrup: [],
+    garnish: '',
+    topOn: '',
+    straw: '',
+    iceCube: 0
+  }
+  
+  if (this.index >= this.optionsHistory.length) {
     this.undoDisabled = true;
   } else {
     this.undoDisabled = false;
   }
 
-  if (this.index <= 1 || JSON.stringify(this.selectedOptions) == this.optionsHistoryUndo[this.optionsHistoryUndo.length - 1]) {
+  if (this.index <= 1 || JSON.stringify(this.selectedOptions) == this.optionsHistory[this.optionsHistory.length - 1]) {
     this.redoDisabled = true
   } else {
     this.redoDisabled = false;
+  }
+
+  if (this.selectedOptions == resetTringValue) {
+    this.completeDisabled = true
+  } else {
+    this.completeDisabled = false
   }
 }
 
@@ -118,8 +133,8 @@ checkingForChanges(){
   if (this.selectedOptions !== undefined) {
     const changes = this.optionsDiffer.diff(this.selectedOptions);
     
-    if ((changes && this.recordHistory) && (JSON.stringify(this.selectedOptions) !== JSON.stringify(resetTringValue) && JSON.stringify(this.selectedOptions) !== this.optionsHistoryUndo[this.optionsHistoryUndo.length-1])) {
-      this.optionsHistoryUndo.push(JSON.stringify(this.selectedOptions))
+    if ((changes && this.recordHistory) && (JSON.stringify(this.selectedOptions) !== JSON.stringify(resetTringValue) && JSON.stringify(this.selectedOptions) !== this.optionsHistory[this.optionsHistory.length-1])) {
+      this.optionsHistory.push(JSON.stringify(this.selectedOptions))
       this.preLoader.emit(true)
     }
 
