@@ -33,6 +33,7 @@ export class RecommendedItemsComponent implements OnInit {
   select(i){
     console.log(this.recommendedItems[i]);
     this.RecommendedOptionsToGlass.emit(this.recommendedItems[i])
+    this.index = -1;
   }
   ngOnInit() {
   }

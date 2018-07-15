@@ -17,7 +17,8 @@ export class RecommendedItemsSlideComponent implements OnInit {
     
   }
   optionsChange($event){
-    this.recommendedSlideToGlass.emit($event)
+    this.recommendedSlideToGlass.emit($event);
+    this.slideVisiblity = false;
   }
   ngOnInit() {
   }
