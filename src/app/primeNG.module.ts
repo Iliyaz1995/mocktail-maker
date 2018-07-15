@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AccordionModule } from 'primeng/accordion';
-import { PanelModule } from 'primeng/components/panel/panel';
+import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { SidebarModule } from 'primeng/sidebar';
